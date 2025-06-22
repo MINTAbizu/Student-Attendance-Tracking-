@@ -1,0 +1,142 @@
+.departmentlist{
+    display: flex;
+   
+    
+    
+ 
+}
+.departmentlist-content{
+     border: solid 1px #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+   
+    display: flex;
+    justify-content: space-between;
+    gap: 150px;
+    
+    
+   
+
+}
+.departmentlist-table{
+    display: flex;
+
+
+}
+/* add department style */
+
+.add-department-container {
+  max-width: 450px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(60,60,60,0.08);
+  padding: 2rem;
+  animation: fadeIn 0.7s;
+}
+
+.animated-title {
+  text-align: center;
+  color: #1a237e;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: slideDown 0.7s;
+}
+
+.icon {
+  margin-right: 8px;
+  color: #3949ab;
+  vertical-align: middle;
+}
+
+.add-department-form .form-group {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-department-form label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #3949ab;
+  display: flex;
+  align-items: center;
+}
+
+/* .add-department-form input,
+.add-department-form textarea {
+  padding: 0.7rem;
+  border: 1px solid #c5cae9;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.add-department-form input:focus,
+.add-department-form textarea:focus {
+  border-color: #1a237e;
+  outline: none;
+} */
+
+.animated-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(90deg, #3949ab 60%, #1e88e5 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px rgba(60,60,60,0.07);
+}
+
+.animated-btn:hover {
+  background: linear-gradient(90deg, #1e88e5 60%, #3949ab 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.success-message {
+  margin-top: 1rem;
+  color: #388e3c;
+  font-weight: 500;
+  text-align: center;
+  animation: fadeIn 0.5s;
+}
+
+@media (max-width: 600px) {
+  .add-department-container {
+    padding: 1rem;
+    max-width: 98vw;
+  }
+  .animated-title {
+    font-size: 1.3rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.departmenttablewrapper{
+  text-align: center;
+ 
+  justify-content: center;
+  margin-left: 200px;
+ 
+   margin-top: -300px;
+
+}

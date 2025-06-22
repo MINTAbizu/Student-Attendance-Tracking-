@@ -1,21 +1,21 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom'
+import { useAuthContext } from '../Context/Autcontext'
 
-function RolebasedRoute({children, requiredRole})  {
-    const {user, loading} = useAuthContext();
-    const navigate = useNavigate();
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+function RolebasedRoute({ children, requiredRole }) {
+  const { user, loading } = useAuthContext()
 
-    if(!requiredRole.includes(user?.role)) {
-        return children;
-        navigate("/unautorized") // If no role is required, render the children
-    }
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
+  // If user is not logged in or does not have the required role, redirect
+  if (!user || !requiredRole.includes(user.role)) {
+    return <Navigate to="/unauthorized" replace />
+  }
 
-
-
+  // If user has the required role, render the children
+  return children
 }
 
 export default RolebasedRoute

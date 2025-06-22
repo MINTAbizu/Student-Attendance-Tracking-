@@ -10,32 +10,31 @@ function AuthProvider({ children }) {
   const navigate = useNavigate();
 
   // Move verifyUser outside useEffect
-  const verifyUser = async () => {
-    try {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-
-      const response = await axios.get('http://localhost:5000/api/auth/verifyuser',{
+ const verifyUser = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const response = await axios.get('http://localhost:5000/api/auth/verifyuser', {
         headers: {
-          'Authorization': `Bearer ${storedUser} `
+          'Authorization': `Bearer ${token}`
         }
       });
       if (response.data.user) {
         setUser(response.data.user);
       }
     } else {
-        navigate('/login');;
-      }
-    } catch (error) {
-      console.error("Error verifying user:", error);
-      setUser(null);
-      if (error.response && error.response.status === 401) {
-        navigate('/login');
-      }
-    }finally {
-      setLoading(false);
+      navigate('/login');
     }
-  };
+  } catch (error) {
+    console.error("Error verifying user:", error);
+    setUser(null);
+    if (error.response && error.response.status === 401) {
+      navigate('/login');
+    }
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
     verifyUser();
@@ -46,10 +45,11 @@ function AuthProvider({ children }) {
     localStorage.setItem('user', JSON.stringify(user));
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
-  };
+const logout = () => {
+  setUser(null);
+  localStorage.removeItem('user');
+  localStorage.removeItem('token');
+};
 
   return (
     <AuthContext.Provider value={{ user, login, logout, verifyUser, loading }}>

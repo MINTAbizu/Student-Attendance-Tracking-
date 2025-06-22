@@ -12,47 +12,45 @@ function Login() {
   const {login}= useAuthContext();
   const navigate = useNavigate();
 
-  const handlesubmit = async (e) => {
-    e.preventDefault();
-    setEmailError('');
-    setPasswordError('');
-    try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        // Store token and user data in localStorage
-        login(data.user);
+ const handlesubmit = async (e) => {
+  e.preventDefault();
+  setEmailError('');
+  setPasswordError('');
+  try {
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await response.json();
+    if (response.ok) {
+      // Store token and user data in localStorage
+      localStorage.setItem('token', data.token); // Store the JWT token
+      localStorage.setItem('user', JSON.stringify(data.user)); // Store the user object
+      login(data.user); // Update context
 
-        localStorage.setItem('token', data.token);
-        if (data.user.role === 'admin') {
-           navigate('/');
-        }else{
-            navigate('/employee');
-        }
-      
+      if (data.user.role === 'admin') {
+        navigate('/admindashboard');
       } else {
-        // Set errors based on backend message
-        if (data.msg === "User not found") {
-          setEmailError("Email not registered.");
-        } else if (data.msg === "Invalid credentials") {
-          setPasswordError("Incorrect password.");
-        } else {
-          setEmailError('');
-          setPasswordError('');
-        }
+        navigate('/employee');
       }
-    } catch (error) {
-      setEmailError('Server error. Please try again later.');
-      setPasswordError('');
+    } else {
+      if (data.msg === "User not found") {
+        setEmailError("Email not registered.");
+      } else if (data.msg === "Invalid credentials") {
+        setPasswordError("Incorrect password.");
+      } else {
+        setEmailError('');
+        setPasswordError('');
+      }
     }
+  } catch (error) {
+    setEmailError('Server error. Please try again later.');
+    setPasswordError('');
   }
-
+}
   return (
     <div className="login-container">
       <h1 className="login-title">Login Page</h1>

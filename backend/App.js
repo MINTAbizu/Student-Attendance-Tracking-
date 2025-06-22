@@ -4,6 +4,7 @@ import cors from 'cors';
 import connecttodb from './db/db.js';
 import userregistration from './userseed.js';
 import logiroute from './route.js/authroute.js';
+import departmentroute from './route.js/department.route.js';
 
 dotenv.config();
 
@@ -23,6 +24,8 @@ const startServer = async () => {
 
 
 app.use('/api/auth', logiroute);
+
+app.use(departmentroute)
 
 
 

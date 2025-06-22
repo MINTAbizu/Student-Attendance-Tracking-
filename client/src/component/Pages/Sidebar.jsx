@@ -1,6 +1,7 @@
 import React from 'react'
 import '../Pages/sidebar.css'
 import { FaTachometerAlt, FaUserTie, FaCog, FaSignOutAlt } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 function Sidebar() {
   return (
@@ -22,6 +23,9 @@ function Sidebar() {
                 <FaTachometerAlt className="sidebar-icon" /> Projects
                 </a>
           <li/>
+        
+          
+          
             
 
 
@@ -34,6 +38,12 @@ function Sidebar() {
             <a href="/logout">
               <FaSignOutAlt className="sidebar-icon" /> Logout
             </a>
+          </li>
+          
+          <li>
+              <Link to={'/Departmentlist'}>
+                <FaTachometerAlt className="sidebar-icon" /> Department
+                </Link>
           </li>
         </ul>
       </nav>
