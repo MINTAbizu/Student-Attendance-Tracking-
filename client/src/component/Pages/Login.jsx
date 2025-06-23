@@ -53,6 +53,7 @@ function Login() {
 }
   return (
     <div className="login-container">
+    <h1 className="login-title">Employee-Mangement system</h1>
       <h1 className="login-title">Login Page</h1>
       <form className="login-form" onSubmit={handlesubmit}>
         <div className="form-group">

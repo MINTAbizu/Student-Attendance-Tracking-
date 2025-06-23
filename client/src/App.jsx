@@ -9,6 +9,8 @@ import AddDepartment from './component/Pages/department/AddDepartment'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EditDepartment from './component/Pages/department/EditDepartment'
+import List from './component/Pages/employee/List'
+import Add from './component/Pages/employee/Add'
 function App() {
   return (
     <div>
@@ -27,6 +29,9 @@ function App() {
           } />
         <Route path="/Departmentlist" element={<Departmentlist/>}/>
         <Route path="/AddDepartment" element={<AddDepartment />} />
+             <Route path='/edit-department/:id' element={<EditDepartment />} />
+        <Route path="/List" element={<List />} />
+        <Route path="/addemployee" element={<Add />} />
              <Route path='/edit-department/:id' element={<EditDepartment />} />
       </Routes>
     </div>

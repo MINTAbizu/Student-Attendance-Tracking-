@@ -9,12 +9,12 @@ function Sidebar() {
       <nav className="sidebar">
         <ul>
           <li>
-            <a href="/admindashboard">
+            <a href="/">
               <FaTachometerAlt className="sidebar-icon" /> Dashboard
             </a>
           </li>
           <li>
-            <a href="/employee">
+            <a href="/List">
               <FaUserTie className="sidebar-icon" /> Employee
             </a>
           </li>
